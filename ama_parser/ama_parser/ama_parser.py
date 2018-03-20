@@ -8,11 +8,8 @@ def ama_parser(file_name, discard, blanks, data_labels, time_point, plot_title, 
                empties = True, averaging = False, growth_curves = False,
                plots = True, save = False):
 
-    #read in data with proper encoding, skipping metadata in first two and last four rows
+    #read in data with proper encoding, skipping metadata in specified rows
     df = pd.read_table(file_name, encoding = "utf-16", skiprows = skiprows, skipfooter = skipfooter, engine = 'python')
-
-    #discard wells we don't care about, as specified in list of strings "discard"
-    #also automatically discard pre-specified empty outer wells unless empties == False
 
     df = df.dropna(axis = 1)
 
